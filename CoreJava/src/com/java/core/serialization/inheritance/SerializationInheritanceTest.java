@@ -15,9 +15,12 @@ public class SerializationInheritanceTest
 		
 		SerializationUtil.serialize(car, fileName);
 		
+		System.out.println("car Object::" + car);
+		
 		Car deserializedCar = (Car) SerializationUtil.deserialize(fileName);
 		
-		System.out.println("car Object::" + car);
 		System.out.println("deserializedCar Object::" + deserializedCar);
+		
+		//A -> B -> C -> D
 	}
 }

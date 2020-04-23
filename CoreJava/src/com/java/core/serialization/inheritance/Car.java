@@ -1,5 +1,9 @@
 package com.java.core.serialization.inheritance;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class Car extends Vehicle// implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
@@ -47,20 +51,20 @@ public class Car extends Vehicle// implements Serializable
 	// By implementing writeObject method,  
     // we can prevent 
     // subclass from serialization 
-//    private void writeObject(ObjectOutputStream out) throws IOException 
-//    { 
-//        out.writeUTF(this.type);
-//        out.writeInt(this.getSpeed());
-//    } 
-//      
-//    // By implementing readObject method,  
-//    // we can prevent 
-//    // subclass from de-serialization 
-//    private void readObject(ObjectInputStream in) throws IOException 
-//    { 
-//        this.type = in.readUTF();
-//        this.setSpeed(in.readInt());
-//    } 
+    private void writeObject(ObjectOutputStream out) throws IOException 
+    { 
+        out.writeUTF(this.type);
+        out.writeInt(this.getSpeed());
+    } 
+      
+    // By implementing readObject method,  
+    // we can prevent 
+    // subclass from de-serialization 
+    private void readObject(ObjectInputStream in) throws IOException 
+    { 
+        this.type = in.readUTF();
+        this.setSpeed(in.readInt());
+    } 
 
 	@Override
 	public String toString() {
