@@ -21,8 +21,19 @@ public class ApplicationConfig
 	}
 	
 	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Employee employee()
+	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+	public Employee employee1()
+	{
+		Employee employee = new Employee();
+		employee.setName("John");
+		employee.setTransportService(transportService());
+		
+		return employee;
+	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+	public Employee employee2()
 	{
 		Employee employee = new Employee();
 		employee.setName("John");
